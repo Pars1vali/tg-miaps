@@ -26,6 +26,32 @@
         const tg = window.Telegram.WebApp;
         tg.MainButton.show();
         tg.MainButton.setText("Yes");
+        tg.MainButton.onClick(()=>{
+            console.log("Успех");
+        })
+
+        var url = "ваш_адрес_запроса";
+        var data = {
+            ключ: 'значение', // Форматирование данных
+            ключ2: 'значение2'
+        };
+
+        var headers = new Headers();
+        headers.append("Content-Type", "application/json");
+        headers.append("Ваш-Собственный-Заголовок", "значение_заголовка");
+
+        fetch(url, {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify(data) // Преобразование данных в JSON строку
+        })
+        .then(response => response.json()) // Обработка ответа сервера в формате JSON
+        .then(data => {
+            console.log(data); // Ответ от сервера
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+        });
 
     </script>
     
