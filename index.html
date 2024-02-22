@@ -34,22 +34,38 @@
         tg.MainButton.show();
         tg.MainButton.setText("Yes");
         tg.MainButton.onClick(()=>{
-            var data = {
-                name: 'Тестовый успех'
-            };
             tg.showAlert("Успех");
-            fetch(url, {
-                method: "POST",
-                headers: headers,
-                body: JSON.stringify(data) // Преобразование данных в JSON строку
-            })
-            .then(response => response.json()) // Обработка ответа сервера в формате JSON
-            .then(data => {
-                console.log(data); // Ответ от сервера
-            })
-            .catch(error => {
-                console.error('Ошибка:', error);
-            });
+            
+            var postData = {
+                key1: 'value1',
+                key2: 'value2'
+            };
+
+            var jsonData = JSON.stringify(postData);
+
+            // URL, куда будет отправлен запрос
+            var url = 'https://d5dip6pritbe7tmoain3.apigw.yandexcloud.net/aibot';
+
+            // Создание объекта запроса
+            var xhr = new XMLHttpRequest();
+
+            // Открытие соединения
+            xhr.open('POST', url, true);
+
+            // Установка заголовков запроса
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.setRequestHeader('X-Mode', 'test'); // Ваш собственный заголовок
+
+            // Функция обратного вызова, вызываемая при завершении запроса
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.responseText); // Вывод ответа в консоль
+                }
+            };
+
+            // Отправка запроса с данными
+            xhr.send(jsonData);
+     
         });
 
         
