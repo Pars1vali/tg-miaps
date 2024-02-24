@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <script src="https://telegram.org/js/telegram-web-app.js">
-    </script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -25,15 +25,14 @@
 
 <body>
     <p>Привет!</p>
+    <button onclick="myFunction()" id="myButton"></button>
     <script>
-        const tg = window.Telegram.WebApp;
+        document.getElementById('myButton').onclick = myFunction;
+        let btn = document.getElementById("btn");
 
-        tg.MainButton.show();
-        tg.MainButton.setText("Оплатить");
-        tg.MainButton.onClick(() => {
-            tg.showAlert("Успех!");
-
-            let url = 'https://d5dip6pritbe7tmoain3.apigw.yandexcloud.net/aibot';
+        let url = 'https://d5dip6pritbe7tmoain3.apigw.yandexcloud.net/aibot';
+        let body;
+        function myFunction() {
 
             var xhr = new XMLHttpRequest();
             xhr.open("POST", url, true);
@@ -42,14 +41,13 @@
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var json = JSON.parse(xhr.responseText);
-                    tg.showAlert(json);
+                    console.log(json.email + ", " + json.password);
                 }
             };
             var data = JSON.stringify({ "email": "hey@mail.com", "password": "101010" });
             xhr.send(data);
+        }
 
-
-        });
 
 
 
