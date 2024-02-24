@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <script src="https://telegram.org/js/telegram-web-app.js">
     </script>
@@ -12,7 +13,8 @@
             padding: 0;
             box-sizing: border-box;
         }
-        body{
+
+        body {
             font-family: 'Montserrat', sans-serif;
             font-weight: 200;
             color: var(--tg-theme-text-color);
@@ -20,57 +22,39 @@
         }
     </style>
 </head>
+
 <body>
     <p>Привет!</p>
     <script>
         const tg = window.Telegram.WebApp;
 
-        var url = "https://d5dip6pritbe7tmoain3.apigw.yandexcloud.net/aibot";
-        var headers = new Headers();
-
-        headers.append("Content-Type", "application/json");
-        headers.append("X-Custom-Info", "getVoice");
-        
         tg.MainButton.show();
         tg.MainButton.setText("Yes");
-        tg.MainButton.onClick(()=>{
+        tg.MainButton.onClick(() => {
             tg.showAlert("Успех");
-            
-            var postData = {
-                key1: 'value1',
-                key2: 'value2'
-            };
 
-            var jsonData = JSON.stringify(postData);
+            let url = 'https://d5dip6pritbe7tmoain3.apigw.yandexcloud.net/aibot';
 
-            // URL, куда будет отправлен запрос
-            var url = 'https://d5dip6pritbe7tmoain3.apigw.yandexcloud.net/aibot';
-
-            // Создание объекта запроса
             var xhr = new XMLHttpRequest();
-
-            // Открытие соединения
-            xhr.open('POST', url, true);
-
-            // Установка заголовков запроса
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.setRequestHeader('X-Mode', 'test'); // Ваш собственный заголовок
-
-            // Функция обратного вызова, вызываемая при завершении запроса
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("X-Custom-Info", "getOpenInvoiceUrl");
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    console.log(xhr.responseText); // Вывод ответа в консоль
+                    var json = JSON.parse(xhr.responseText);
+                    tg.showAlert(json);
                 }
             };
+            var data = JSON.stringify({ "email": "hey@mail.com", "password": "101010" });
+            xhr.send(data);
 
-            // Отправка запроса с данными
-            xhr.send(jsonData);
-     
+
         });
 
-        
+
 
     </script>
-    
+
 </body>
+
 </html>
