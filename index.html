@@ -40,7 +40,7 @@
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var json = JSON.parse(xhr.responseText);
-                    tg.openInvoice(json['body']);
+                    tg.openInvoice(json.body);
                 }
             };
             var data = JSON.stringify({ "email": "hey@mail.com", "password": "101010" });
