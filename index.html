@@ -25,16 +25,15 @@
 
 <body>
     <p>Привет! Получиолось!!!</p>
+    <button id="btn" onclick="myFunction"> </button>
     <script>
         const tg = window.Telegram.WebApp;
         let url = 'https://d5dip6pritbe7tmoain3.apigw.yandexcloud.net/aibot';
-
+        let invoice = null;
 
 
         var data = JSON.stringify({ "email": "hey@mail.com", "password": "101010" });
-        tg.MainButton.show();
-        tg.MainButton.setText("Оплатить");
-        tg.MainButton.onClick(() => {
+        function myFunction(){
             var xhr = new XMLHttpRequest();
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
@@ -42,11 +41,18 @@
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var json = JSON.parse(xhr.responseText);
-                    tg.showAlert(json.body);
-                    tg.openInvoice(json.body);
+                    invoice = json.body;
                 }
             };
             xhr.send(data);
+            
+        }
+
+        tg.MainButton.show();
+        tg.MainButton.setText("Оплатить");
+        tg.MainButton.onClick(() => {
+            tg.openInvoice(invoice);
+            
         });
 
 
