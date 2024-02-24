@@ -25,7 +25,7 @@
 
 <body>
     <p>Привет! Получиолось!!!</p>
-    <button id="btn" onclick="myFunction"> </button>
+    <!-- <button id="btn" onclick="myFunction"> </button> -->
     <style>
         #btn {
             width: 100px;
@@ -40,29 +40,29 @@
 
         var data = JSON.stringify({ "email": "hey@mail.com", "password": "101010" });
 
-        document.getElementById('btn').onclick = myFunction;
+        //document.getElementById('btn').onclick = myFunction;
 
 
         // async function myFunction() {
 
-            // let user = {
-            //     name: 'John',
-            //     surname: 'Smith'
-            // };
+        // let user = {
+        //     name: 'John',
+        //     surname: 'Smith'
+        // };
 
-            // let response = await fetch(url, {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json;charset=utf-8',
-            //         "X-Custom-Info": "getOpenInvoiceUrl"
-            //     },
-            //     body: JSON.stringify(user)
-            // });
+        // let response = await fetch(url, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json;charset=utf-8',
+        //         "X-Custom-Info": "getOpenInvoiceUrl"
+        //     },
+        //     body: JSON.stringify(user)
+        // });
 
-            // let result = await response.json();
-            // alert(result.message);
-            // alert(result.body);
-            // alert(result);
+        // let result = await response.json();
+        // alert(result.message);
+        // alert(result.body);
+        // alert(result);
         // }
 
         tg.MainButton.show();
