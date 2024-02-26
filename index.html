@@ -20,29 +20,35 @@
             color: var(--tg-theme-text-color);
             background: var(--tg-theme-bg-color);
         }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 
 <body>
     <div>
-        <img src="/960.jpg" id="backgroundImage"/> 
-        
+        <img src="/960.jpg" id="backgroundImage" alt="backgroundImage" />
+
     </div>
 
     <script>
         const tg = window.Telegram.WebApp;
         let url = 'https://d5dip6pritbe7tmoain3.apigw.yandexcloud.net/aibot';
-        
+
         tg.MainButton.show();
         tg.MainButton.setText("Оплатить");
         tg.MainButton.onClick(() => {
             var data = JSON.stringify(
-            { "name": "name",
-             "desciption": "desciption",
-             "payload":"payload",
-             "currency":"currency",
-             "cost":"cost"
-            }
+                {
+                    "name": "name",
+                    "desciption": "desciption",
+                    "payload": "payload",
+                    "currency": "currency",
+                    "cost": "cost"
+                }
             );
             console.log("start");
             var xhr = new XMLHttpRequest();
