@@ -25,45 +25,27 @@
 
 <body>
     <p>Привет! Получиолось!!!</p>
-    <!-- <button id="btn" onclick="myFunction"> </button> -->
-    <style>
-        #btn {
-            width: 100px;
-            height: 50px;
-        }
-    </style>
+    <div>
+        <p>Название покупки</p>
+        <input type="text" id="name"/>
+        <p>Описание</p>
+        <input type="text" id="desciption"/>
+        <p>Дополнительные параметры</p>
+        <input type="text" id="payload"/>
+        <p>Выберите валюту</p>
+        <select type="text" id="currency">
+            <option>rub</option>
+            <option>usd</option>
+        </select>
+        <p>Стоимость в рублях</p>
+        <input type="number" id="cost"/>
+    </div>
 
     <script>
         const tg = window.Telegram.WebApp;
         let url = 'https://d5dip6pritbe7tmoain3.apigw.yandexcloud.net/aibot';
-        let invoice = null;
-
+        
         var data = JSON.stringify({ "email": "hey@mail.com", "password": "101010" });
-
-        //document.getElementById('btn').onclick = myFunction;
-
-
-        // async function myFunction() {
-
-        // let user = {
-        //     name: 'John',
-        //     surname: 'Smith'
-        // };
-
-        // let response = await fetch(url, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json;charset=utf-8',
-        //         "X-Custom-Info": "getOpenInvoiceUrl"
-        //     },
-        //     body: JSON.stringify(user)
-        // });
-
-        // let result = await response.json();
-        // alert(result.message);
-        // alert(result.body);
-        // alert(result);
-        // }
 
         tg.MainButton.show();
         tg.MainButton.setText("Оплатить");
