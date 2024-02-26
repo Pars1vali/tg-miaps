@@ -54,8 +54,8 @@
         let btn = document.getElementById("btn");
 
         btn.onclick(()=>{
-            console.log(currency.value);
-            console.log(tg.CloudStorage.getKeys());
+            tg.showAlert(currency.value);
+            tg.showAlert(tg.CloudStorage.getKeys());
         })
 
 
