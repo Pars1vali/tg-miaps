@@ -42,22 +42,23 @@
     </div>
 
     <script>
-        // let name = document.getElementById("name");
-        // let desciption = document.getElementById("desciption");
-        // let payload = document.getElementById("payload");
-        // let currency = document.getElementById("currency");
-        // let cost = document.getElementById("cost");
-        // let btn = document.getElementById("btn");
-
-        // btn.onclick(()=>{
-        //     console.log(currency.value);
-        //     console.log(tg.CloudStorage.getKeys());
-        // })
-
-
         const tg = window.Telegram.WebApp;
         let url = 'https://d5dip6pritbe7tmoain3.apigw.yandexcloud.net/aibot';
         
+        
+        let name = document.getElementById("name");
+        let desciption = document.getElementById("desciption");
+        let payload = document.getElementById("payload");
+        let currency = document.getElementById("currency");
+        let cost = document.getElementById("cost");
+        let btn = document.getElementById("btn");
+
+        btn.onclick(()=>{
+            console.log(currency.value);
+            console.log(tg.CloudStorage.getKeys());
+        })
+
+
         
 
         tg.MainButton.show();
