@@ -6,67 +6,23 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/script.js"></script>
+    <link rel="stylesheet" href="/style.css">
     <title>Document</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 200;
-            color: var(--tg-theme-text-color);
-            background: var(--tg-theme-bg-color);
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+    
 </head>
-
 <body>
-    <div>
-        <img src="/960.jpg" id="backgroundImage" alt="backgroundImage" />
-
-    </div>
-
-    <script>
-        const tg = window.Telegram.WebApp;
-        let url = 'https://d5dip6pritbe7tmoain3.apigw.yandexcloud.net/aibot';
-
-        tg.MainButton.show();
-        tg.MainButton.setText("Оплатить");
-        tg.MainButton.onClick(() => {
-            var data = JSON.stringify(
-                {
-                    "name": "name",
-                    "desciption": "desciption",
-                    "payload": "payload",
-                    "currency": "currency",
-                    "cost": "cost"
-                }
-            );
-            console.log("start");
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", url, true);
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.setRequestHeader("X-Custom-Info", "getOpenInvoiceUrl");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    tg.openInvoice(xhr.responseText);
-                }
-            };
-            xhr.send(data);
-        });
-
-
-
-    </script>
-
+    <div id="container">
+   <p>Что-то есть</p>
+   <div id="background">
+        <img src="/images/bike.png" width="25%" alt="bike" id="bike"/>
+   </div>
+   <div id="navigation">
+        <button id="up" onclick="upBtnClick()">^</button>
+        <button id="left" onclick="leftBtnClick()"><</button>
+        <button id="right" onclick="rightBtnClick()">></button>
+        <button id="bottom" onclick="bottomBtnClick()">|</button>
+   </div>
+</div>
 </body>
-
 </html>
