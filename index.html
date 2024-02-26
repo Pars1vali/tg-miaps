@@ -25,43 +25,23 @@
 
 <body>
     <div>
-        <p>Название покупки</p>
-        <input type="text" id="name"/>
-        <p>Описание</p>
-        <input type="text" id="desciption"/>
-        <p>Дополнительные параметры</p>
-        <input type="text" id="payload"/>
-        <p>Выберите валюту</p>
-        <select type="text" id="currency">
-            <option value="rub">Рубли</option>
-            <option value="usd">Доллары</option>
-        </select>
-        <p>Стоимость в рублях</p>
-        <input type="number" id="cost"/>
-        <button id="btn">Кнопка</button>
+        <img src="/960.jpg" id="backgroundImage"/> 
+        
     </div>
 
     <script>
         const tg = window.Telegram.WebApp;
         let url = 'https://d5dip6pritbe7tmoain3.apigw.yandexcloud.net/aibot';
         
-        
-        let name = document.getElementById("name");
-        let desciption = document.getElementById("desciption");
-        let payload = document.getElementById("payload");
-        let currency = document.getElementById("currency");
-        let cost = document.getElementById("cost");
-        let btn = document.getElementById("btn");
-
         tg.MainButton.show();
         tg.MainButton.setText("Оплатить");
         tg.MainButton.onClick(() => {
             var data = JSON.stringify(
-            { "name": name,
-             "desciption": desciption,
-             "payload":payload,
-             "currency":currency,
-             "cost":cost
+            { "name": "name",
+             "desciption": "desciption",
+             "payload":"payload",
+             "currency":"currency",
+             "cost":"cost"
             }
             );
             console.log("start");
