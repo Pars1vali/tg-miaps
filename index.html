@@ -33,22 +33,44 @@
         <input type="text" id="payload"/>
         <p>Выберите валюту</p>
         <select type="text" id="currency">
-            <option>rub</option>
-            <option>usd</option>
+            <option value="rub">Рубли</option>
+            <option value="usd">Доллары</option>
         </select>
         <p>Стоимость в рублях</p>
         <input type="number" id="cost"/>
+        <button id="btn">ff</button>
     </div>
 
     <script>
+        let name = document.getElementById("name");
+        let desciption = document.getElementById("desciption");
+        let payload = document.getElementById("payload");
+        let currency = document.getElementById("currency");
+        let cost = document.getElementById("cost");
+        let btn = document.getElementById("btn");
+
+        btn.onclick(()=>{
+            console.log(currency.value);
+            console.log(tg.CloudStorage.getKeys());
+        })
+
+
         const tg = window.Telegram.WebApp;
         let url = 'https://d5dip6pritbe7tmoain3.apigw.yandexcloud.net/aibot';
         
-        var data = JSON.stringify({ "email": "hey@mail.com", "password": "101010" });
+        
 
         tg.MainButton.show();
         tg.MainButton.setText("Оплатить");
         tg.MainButton.onClick(() => {
+            var data = JSON.stringify(
+            { "name": name,
+             "desciption": desciption,
+             "payload":payload,
+             "currency":currency,
+             "cost":cost
+            }
+            );
             console.log("start");
             var xhr = new XMLHttpRequest();
             xhr.open("POST", url, true);
